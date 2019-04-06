@@ -14,10 +14,13 @@ variables:
 
 steps:
   - script: |
+      docker login -u $(dockerid) -p $(pwd) $(registry)
+    displayName: 'docker login'
+
+  - script: |
       docker build -t $(registry)/$(imageName) --build-arg espressif32_version=$(espressif32_version) .
     displayName: 'docker build'
 
   - script: |
-      docker login -u $(dockerid) -p $(pwd) $(registry)
       docker push $(registry)/$(imageName)
     displayName: 'docker push'
