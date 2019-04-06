@@ -14,7 +14,7 @@ variables:
 
 steps:
   - script: |
-      docker login -u $(dockerid) -p $(pwd) $(registry)
+      docker login -u $(dockerid) -p $(pwd)
     displayName: 'docker login'
 
   - script: |
